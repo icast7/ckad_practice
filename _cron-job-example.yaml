@@ -1,0 +1,23 @@
+# TODO
+# https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-job-em-
+# kubectl create job test-job --from=cronjob/a-cronjob
+# https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-job-em-
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox:1.28
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c 
+            - date; echo Hello from the K8S cluster
+          restartPolicy: OnFailure

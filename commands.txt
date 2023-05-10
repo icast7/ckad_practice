@@ -1,0 +1,9 @@
+kubectl create ns ignacio
+kubectl api-resources
+kubectl config current-context
+kubectl config set-context --current --namespace=ignacio
+kubectl config view | grep namespace
+curl ifconfig.io
+cat /etc/passwd
+
+
